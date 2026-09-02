@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Vórtex Racing — a primeira equipe de Fórmula SAE do Maranhão."
+    />
+    <title>Vórtex Racing | Fórmula SAE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700&family=DM+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { graphite: '#2A2E3A', racing: '#CF0101', deepred: '#8A0103' },
+            fontFamily: { display: ['Barlow Condensed', 'sans-serif'], body: ['DM Sans', 'sans-serif'] },
+          },
+        },
+      }
+    </script>
+    <style>
+      html { scroll-behavior: smooth; }
+      body { background: #2A2E3A; }
+      .grid-noise { background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px); background-size: 52px 52px; }
+      .speed-lines { background: repeating-linear-gradient(90deg, transparent 0 12px, rgba(207,1,1,.8) 12px 15px, transparent 15px 38px); }
+      .number-outline { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.12); }
+      .section-label::before { content: ''; display: inline-block; width: 2.25rem; height: 2px; background: #CF0101; margin: 0 .65rem .35rem 0; }
+      .clip-card { clip-path: polygon(0 0, 100% 0, 100% calc(100% - 22px), calc(100% - 22px) 100%, 0 100%); }
+      .clip-button { clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 100%, 0 100%); }
+      .hero-image { mask-image: linear-gradient(90deg, transparent 0%, black 21%, black 100%); }
+      .menu-open { overflow: hidden; }
+      .sponsor-marquee { mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent); }
+      .sponsor-track { width: max-content; animation: sponsor-scroll 20s linear infinite; }
+      .sponsor-marquee:hover .sponsor-track { animation-play-state: paused; }
+      .sponsor-logo-card { display: grid; height: 8.5rem; width: 15rem; place-items: center; padding: 1.75rem; background: #fff; }
+      .sponsor-logo-card img { max-height: 3.75rem; max-width: 100%; width: auto; object-fit: contain; }
+      @keyframes sponsor-scroll { to { transform: translateX(-50%); } }
+      @media (min-width: 640px) { .sponsor-logo-card { height: 10rem; width: 20rem; padding: 2rem; } .sponsor-logo-card img { max-height: 4.5rem; } }
+      @media (prefers-reduced-motion: reduce) { .sponsor-track { animation: none; } }
+    </style>
+  </head>
+  <body class="font-body text-white antialiased">
+    <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-graphite/85 backdrop-blur-xl">
+      <nav class="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 lg:px-8" aria-label="Navegação principal">
+        <a href="#inicio" class="flex items-center" aria-label="Vórtex Racing - Início">
+          <img src="assets/logo-white.png" alt="Vórtex Racing" class="h-9 w-auto sm:h-10" />
+        </a>
+        <div class="hidden items-center gap-6 text-xs font-bold uppercase tracking-[.13em] text-white/70 xl:flex">
+          <a href="#equipe" class="transition hover:text-white">Equipe</a>
+          <a href="#formula-sae" class="transition hover:text-white">Fórmula SAE</a>
+          <a href="#projetos" class="transition hover:text-white">Projetos</a>
+          <a href="#participacoes" class="transition hover:text-white">Participações</a>
+          <a href="#patrocinadores" class="transition hover:text-white">Patrocinadores</a>
+        </div>
+        <a href="#contato" class="hidden bg-racing px-5 py-3 text-xs font-bold uppercase tracking-wider transition hover:bg-deepred sm:block">Fale conosco</a>
+        <button id="menu-button" class="grid h-10 w-10 place-items-center text-white xl:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="Abrir menu">
+          <span class="flex w-6 flex-col gap-1.5"><span class="h-0.5 w-full bg-white"></span><span class="h-0.5 w-full bg-white"></span><span class="h-0.5 w-4 bg-racing"></span></span>
+        </button>
+      </nav>
+    </header>
+
+    <div id="mobile-menu" class="fixed inset-0 z-[60] hidden bg-graphite px-6 pt-7" aria-hidden="true">
+      <div class="flex items-center justify-between border-b border-white/10 pb-6">
+        <img src="assets/logo-white.png" alt="Vórtex Racing" class="h-9 w-auto" />
+        <button id="close-menu" class="grid h-10 w-10 place-items-center border border-white/20 text-xl" aria-label="Fechar menu">×</button>
+      </div>
+      <div class="mt-10 flex flex-col gap-6 font-display text-4xl font-bold uppercase tracking-wide">
+        <a class="mobile-link" href="#inicio">Início</a><a class="mobile-link" href="#equipe">Equipe</a><a class="mobile-link" href="#formula-sae">Fórmula SAE</a><a class="mobile-link" href="#projetos">Projetos</a><a class="mobile-link" href="#participacoes">Participações</a><a class="mobile-link" href="#patrocinadores">Patrocinadores</a><a class="mobile-link text-racing" href="#contato">Contato</a>
+      </div>
+    </div>
+
+    <main>
+      <section id="inicio" class="relative isolate flex min-h-screen items-end overflow-hidden pt-20">
+        <div class="grid-noise absolute inset-0 opacity-70"></div>
+        <div class="absolute -right-40 top-12 h-[34rem] w-[34rem] rounded-full bg-racing/20 blur-[150px]"></div>
+        <div class="absolute right-0 top-0 h-full w-[65%] overflow-hidden opacity-75">
+          <img src="assets/team.jpg" alt="Integrantes da Vórtex Racing ao lado do protótipo" class="hero-image h-full w-full object-cover object-center" />
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-graphite to-transparent"></div>
+        <div class="absolute bottom-10 right-0 hidden h-1 w-2/5 opacity-80 lg:block speed-lines"></div>
+        <div class="relative mx-auto w-full max-w-7xl px-5 pb-16 pt-24 sm:px-8 md:pb-24 lg:pb-28">
+          <div class="max-w-3xl">
+            <p class="section-label mb-5 text-xs font-bold uppercase tracking-[.22em] text-white/70">UEMA · São Luís, Maranhão</p>
+            <h1 class="font-display text-6xl font-bold uppercase leading-[.83] tracking-tight text-white sm:text-8xl lg:text-[9rem]">
+              Engenharia<br /><span class="text-racing">em movimento.</span>
+            </h1>
+            <p class="mt-8 max-w-xl text-base leading-relaxed text-white/70 sm:text-lg">A primeira equipe de Fórmula SAE do Maranhão. Projetamos, construímos e aceleramos ideias que transformam o futuro.</p>
+            <div class="mt-9 flex flex-wrap gap-4">
+              <a href="#equipe" class="clip-button bg-racing px-7 py-4 text-sm font-bold uppercase tracking-wider transition hover:bg-deepred">Conheça o projeto <span class="ml-2">↗</span></a>
+              <a href="#patrocinadores" class="clip-button border border-white/30 bg-white/5 px-7 py-4 text-sm font-bold uppercase tracking-wider transition hover:border-white hover:bg-white/10">Seja patrocinador</a>
+            </div>
+          </div>
+        </div>
+        <div class="absolute bottom-8 right-6 hidden items-center gap-4 lg:flex"><span class="h-px w-12 bg-racing"></span><span class="text-[10px] font-bold uppercase tracking-[.25em] text-white/50">Role para explorar</span></div>
+      </section>
+
+      <section class="border-y border-white/10 bg-[#222631] py-5">
+        <div class="mx-auto flex max-w-7xl items-center gap-7 overflow-hidden px-5 text-[11px] font-bold uppercase tracking-[.2em] text-white/55 sm:px-8">
+          <span class="whitespace-nowrap">Vórtex Racing</span><span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-racing"></span><span class="whitespace-nowrap">Fórmula SAE Brasil</span><span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-racing"></span><span class="whitespace-nowrap">Universidade Estadual do Maranhão</span><span class="h-1.5 w-1.5 shrink-0 rotate-45 bg-racing"></span><span class="whitespace-nowrap">Desde 2016</span>
+        </div>
+      </section>
+
+      <section id="equipe" class="relative overflow-hidden py-24 sm:py-32">
+        <div class="absolute right-0 top-10 font-display text-[16rem] font-bold leading-none number-outline sm:text-[24rem]">01</div>
+        <div class="relative mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-[.9fr_1.1fr] lg:items-end">
+          <div>
+            <p class="section-label text-xs font-bold uppercase tracking-[.22em] text-racing">A equipe</p>
+            <h2 class="mt-4 max-w-md font-display text-5xl font-bold uppercase leading-[.88] sm:text-6xl">Nascemos para<br />fazer diferente.</h2>
+            <a href="#contato" class="mt-9 inline-flex items-center gap-3 border-b border-racing pb-2 text-xs font-bold uppercase tracking-wider text-white transition hover:text-racing">Faça parte da Vórtex <span class="text-lg">→</span></a>
+          </div>
+          <div>
+            <p class="max-w-2xl text-lg leading-relaxed text-white/80">A Vórtex Racing é uma equipe de competição automotiva da Universidade Estadual do Maranhão. Formada por estudantes de Engenharia Mecânica e outros cursos, somos a primeira e única equipe maranhense a participar da Fórmula SAE Brasil.</p>
+            <p class="mt-5 max-w-xl leading-relaxed text-white/55">Na gestão de 2026, reunimos talentos de diferentes áreas para transformar teoria em uma experiência real de engenharia, colaboração e alto desempenho.</p>
+            <div class="mt-11 grid grid-cols-3 gap-px bg-white/10">
+              <div class="bg-graphite p-4 sm:p-6"><strong class="font-display text-5xl font-bold text-racing sm:text-6xl">29</strong><span class="mt-2 block text-[10px] font-bold uppercase tracking-wider text-white/55">Membros</span></div>
+              <div class="bg-graphite p-4 sm:p-6"><strong class="font-display text-5xl font-bold text-racing sm:text-6xl">07</strong><span class="mt-2 block text-[10px] font-bold uppercase tracking-wider text-white/55">Coordenações</span></div>
+              <div class="bg-graphite p-4 sm:p-6"><strong class="font-display text-5xl font-bold text-racing sm:text-6xl">01ª</strong><span class="mt-2 block text-[10px] font-bold uppercase tracking-wider text-white/55">Do Maranhão</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bg-[#20242e] py-20 sm:py-28">
+        <div class="mx-auto max-w-7xl px-5 sm:px-8">
+          <div class="flex flex-wrap items-end justify-between gap-6"><div><p class="section-label text-xs font-bold uppercase tracking-[.22em] text-racing">Estrutura</p><h2 class="mt-4 font-display text-5xl font-bold uppercase leading-none sm:text-6xl">Uma equipe.<br />Sete frentes.</h2></div><p class="max-w-sm text-sm leading-relaxed text-white/55">Cada coordenação é essencial para levar um projeto do conceito à pista.</p></div>
+          <div class="mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            <article class="clip-card border border-white/10 bg-graphite p-6 transition hover:border-racing hover:bg-[#323746]"><span class="font-display text-4xl font-bold text-racing">01</span><h3 class="mt-10 font-display text-2xl font-bold uppercase">Marketing</h3><p class="mt-3 text-sm leading-relaxed text-white/55">Estratégia, marca e conexão com a nossa comunidade.</p></article>
+            <article class="clip-card border border-white/10 bg-graphite p-6 transition hover:border-racing hover:bg-[#323746]"><span class="font-display text-4xl font-bold text-racing">02</span><h3 class="mt-10 font-display text-2xl font-bold uppercase">Estrutural &<br />Aerodinâmica</h3><p class="mt-3 text-sm leading-relaxed text-white/55">Performance, leveza e fluxo em cada detalhe do carro.</p></article>
+            <article class="clip-card border border-white/10 bg-graphite p-6 transition hover:border-racing hover:bg-[#323746]"><span class="font-display text-4xl font-bold text-racing">03</span><h3 class="mt-10 font-display text-2xl font-bold uppercase">Eletrônica</h3><p class="mt-3 text-sm leading-relaxed text-white/55">Inteligência embarcada para decisões precisas.</p></article>
+            <article class="clip-card border border-white/10 bg-graphite p-6 transition hover:border-racing hover:bg-[#323746]"><span class="font-display text-4xl font-bold text-racing">04</span><h3 class="mt-10 font-display text-2xl font-bold uppercase">Powertrain</h3><p class="mt-3 text-sm leading-relaxed text-white/55">A força que transforma projeto em aceleração.</p></article>
+            <article class="clip-card border border-white/10 bg-graphite p-6 transition hover:border-racing hover:bg-[#323746]"><span class="font-display text-4xl font-bold text-racing">05</span><h3 class="mt-10 font-display text-2xl font-bold uppercase">Freios &<br />Segurança</h3><p class="mt-3 text-sm leading-relaxed text-white/55">Controle e confiança em todos os limites.</p></article>
+            <article class="clip-card border border-white/10 bg-graphite p-6 transition hover:border-racing hover:bg-[#323746]"><span class="font-display text-4xl font-bold text-racing">06</span><h3 class="mt-10 font-display text-2xl font-bold uppercase">Dinâmica<br />Veicular</h3><p class="mt-3 text-sm leading-relaxed text-white/55">Ajustes que fazem o conjunto responder melhor.</p></article>
+            <article class="clip-card border border-racing bg-racing p-6 sm:col-span-2 lg:col-span-1"><span class="font-display text-4xl font-bold text-white">07</span><h3 class="mt-10 font-display text-2xl font-bold uppercase">Drivetrain</h3><p class="mt-3 text-sm leading-relaxed text-white/75">Transmissão eficiente para cada saída de curva.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section id="formula-sae" class="relative overflow-hidden py-24 sm:py-32">
+        <div class="absolute inset-y-0 right-0 hidden w-1/2 bg-[linear-gradient(135deg,rgba(207,1,1,.18),transparent_60%)] lg:block"></div>
+        <div class="relative mx-auto grid max-w-7xl gap-14 px-5 sm:px-8 lg:grid-cols-2 lg:gap-24">
+          <div><p class="section-label text-xs font-bold uppercase tracking-[.22em] text-racing">Fórmula SAE</p><h2 class="mt-4 font-display text-5xl font-bold uppercase leading-[.88] sm:text-7xl">A competição<br />é o começo.</h2></div>
+          <div class="pt-2"><p class="text-lg leading-relaxed text-white/80">A Fórmula SAE é uma competição universitária em que estudantes projetam, constroem e competem com protótipos de carros estilo fórmula.</p><p class="mt-5 leading-relaxed text-white/55">Mais do que velocidade, ela avalia projeto técnico, custos, apresentação de negócios e desempenho em pista — um desafio completo que aproxima a universidade da indústria.</p><div class="mt-10 border-l-2 border-racing pl-6"><p class="font-display text-3xl font-bold uppercase leading-tight">Da prancheta à pista, construímos soluções reais.</p></div></div>
+        </div>
+      </section>
+
+      <section id="projetos" class="bg-[#20242e] py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-5 sm:px-8"><div class="flex flex-wrap items-end justify-between gap-6"><div><p class="section-label text-xs font-bold uppercase tracking-[.22em] text-racing">Projetos</p><h2 class="mt-4 font-display text-5xl font-bold uppercase leading-none sm:text-6xl">Pensado para<br />a performance.</h2></div><p class="max-w-sm text-sm leading-relaxed text-white/55">Projetar um carro é integrar centenas de escolhas técnicas em uma única máquina.</p></div>
+          <div class="mt-14 grid gap-4 lg:grid-cols-12">
+            <article class="clip-card relative min-h-[420px] overflow-hidden bg-[#151821] lg:col-span-7"><img src="assets/chassis-render.jpg" alt="Render da estrutura do protótipo" class="absolute inset-0 h-full w-full object-cover opacity-75 transition duration-700 hover:scale-105" /><div class="absolute inset-0 bg-gradient-to-t from-[#151821] via-transparent to-transparent"></div><div class="absolute bottom-0 p-7 sm:p-10"><span class="text-xs font-bold uppercase tracking-[.2em] text-racing">01 / Estrutura</span><h3 class="mt-2 font-display text-4xl font-bold uppercase">O esqueleto<br />da máquina.</h3></div></article>
+            <div class="grid gap-4 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1"><article class="clip-card relative min-h-[200px] overflow-hidden bg-[#151821]"><img src="assets/powertrain-render.jpg" alt="Render do motor do protótipo" class="absolute inset-0 h-full w-full object-cover opacity-75 transition duration-700 hover:scale-105" /><div class="absolute inset-0 bg-gradient-to-t from-[#151821] to-transparent"></div><h3 class="absolute bottom-6 left-6 font-display text-3xl font-bold uppercase">Powertrain</h3></article><article class="clip-card relative min-h-[200px] overflow-hidden bg-[#151821]"><img src="assets/suspension-render.jpg" alt="Render da suspensão do protótipo" class="absolute inset-0 h-full w-full object-cover opacity-75 transition duration-700 hover:scale-105" /><div class="absolute inset-0 bg-gradient-to-t from-[#151821] to-transparent"></div><h3 class="absolute bottom-6 left-6 font-display text-3xl font-bold uppercase">Dinâmica<br />veicular</h3></article></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="participacoes" class="py-24 sm:py-32"><div class="mx-auto grid max-w-7xl gap-12 px-5 sm:px-8 lg:grid-cols-[.9fr_1.1fr] lg:items-center"><div class="relative"><div class="absolute -left-4 -top-4 h-full w-full border border-racing"></div><img src="assets/event.jpg" alt="Vórtex Racing em evento" class="relative aspect-[4/5] w-full object-cover sm:aspect-[5/4]" /></div><div><p class="section-label text-xs font-bold uppercase tracking-[.22em] text-racing">Participações</p><h2 class="mt-4 font-display text-5xl font-bold uppercase leading-[.88] sm:text-6xl">A pista é só<br />onde começa.</h2><p class="mt-7 max-w-xl leading-relaxed text-white/65">A Vórtex Racing leva a engenharia para além da competição, marcando presença em feiras educacionais, eventos de extensão, escolas públicas e técnicas, seminários e mostras científicas.</p><div class="mt-10 grid grid-cols-2 gap-x-8 gap-y-5 border-t border-white/15 pt-7 text-sm font-semibold text-white/80 sm:grid-cols-3"><span>Fórmula SAE Brasil</span><span>Feiras educacionais</span><span>Eventos UEMA</span><span>Escolas técnicas</span><span>Mostras científicas</span><span>Seminários</span></div></div></div></section>
+
+      <section id="patrocinadores" class="relative overflow-hidden bg-racing py-24 sm:py-32"><div class="absolute -right-12 -top-40 font-display text-[30rem] font-bold leading-none text-white/10">V</div><div class="relative mx-auto max-w-7xl px-5 sm:px-8"><div class="grid gap-12 lg:grid-cols-2"><div><p class="section-label text-xs font-bold uppercase tracking-[.22em] text-white/80 before:bg-white">Patrocinadores</p><h2 class="mt-4 max-w-xl font-display text-5xl font-bold uppercase leading-[.86] sm:text-7xl">Sua marca<br />no futuro da<br />engenharia.</h2><p class="mt-7 max-w-lg leading-relaxed text-white/80">Ao patrocinar a Vórtex, sua empresa se conecta a inovação, formação de talentos e uma comunidade que transforma desafios em resultados.</p><a href="#contato" class="clip-button mt-9 inline-block bg-graphite px-7 py-4 text-sm font-bold uppercase tracking-wider transition hover:bg-black">Quero patrocinar <span class="ml-2">↗</span></a></div><div class="grid gap-3 sm:grid-cols-3 lg:pt-8"><article class="clip-card border border-white/25 bg-[#a90102] p-6"><p class="text-xs font-bold uppercase tracking-[.18em] text-white/60">Formula</p><p class="mt-8 font-display text-4xl font-bold">R$ 3.500</p><ul class="mt-8 space-y-3 text-sm leading-snug text-white/80"><li>Redes sociais</li><li>Produtos e serviços</li><li>Campanhas em parceria</li></ul></article><article class="clip-card border border-white/35 bg-graphite p-6"><p class="text-xs font-bold uppercase tracking-[.18em] text-racing">Premium</p><p class="mt-8 font-display text-4xl font-bold">R$ 5.000</p><ul class="mt-8 space-y-3 text-sm leading-snug text-white/70"><li>Logo no carro</li><li>Uniformes e box</li><li>Material institucional</li></ul></article><article class="clip-card border border-white/25 bg-[#a90102] p-6"><p class="text-xs font-bold uppercase tracking-[.18em] text-white/60">Vórtex Experience</p><p class="mt-8 font-display text-4xl font-bold">R$ 10.000</p><ul class="mt-8 space-y-3 text-sm leading-snug text-white/80"><li>Conteúdo tecnológico</li><li>Oficinas maker</li><li>Todos os benefícios</li></ul></article></div></div></div><div class="relative mt-20 border-y border-white/25 py-8 sm:py-10"><div class="mx-auto max-w-7xl px-5 sm:px-8"><div class="mb-6 flex items-center justify-between gap-5"><p class="text-[11px] font-bold uppercase tracking-[.2em] text-white/65">Marcas que aceleram com a gente</p><span class="text-[10px] font-bold uppercase tracking-[.16em] text-white/55">Parceiros oficiais</span></div></div><div class="sponsor-marquee"><div class="sponsor-track flex px-2"><div class="flex gap-4 pr-4 sm:gap-6 sm:pr-6"><div class="sponsor-logo-card"><img src="assets/ciser.png" alt="Ciser" /></div><div class="sponsor-logo-card"><img src="assets/solidworks.png" alt="SolidWorks" /></div><div class="sponsor-logo-card"><img src="assets/ansys.png" alt="Ansys" /></div></div><div class="flex gap-4 pr-4 sm:gap-6 sm:pr-6" aria-hidden="true"><div class="sponsor-logo-card"><img src="assets/ciser.png" alt="" /></div><div class="sponsor-logo-card"><img src="assets/solidworks.png" alt="" /></div><div class="sponsor-logo-card"><img src="assets/ansys.png" alt="" /></div></div></div></div></div></section>
+
+      <section id="contato" class="py-24 sm:py-32"><div class="mx-auto max-w-7xl px-5 sm:px-8"><div class="grid gap-10 border-y border-white/15 py-12 sm:py-16 lg:grid-cols-[1fr_auto] lg:items-end"><div><p class="section-label text-xs font-bold uppercase tracking-[.22em] text-racing">Contato</p><h2 class="mt-4 font-display text-5xl font-bold uppercase leading-[.86] sm:text-7xl">Vamos construir<br />o próximo capítulo?</h2></div><a href="mailto:equipevortexracing@gmail.com" class="font-display text-2xl font-bold uppercase text-racing underline decoration-1 underline-offset-8 transition hover:text-white sm:text-3xl">equipevortexracing@gmail.com</a></div><div class="grid gap-8 py-10 text-sm text-white/55 sm:grid-cols-3"><div><p class="mb-2 text-[10px] font-bold uppercase tracking-[.18em] text-white">Instituição</p><p>Universidade Estadual do Maranhão<br />Cidade Universitária Paulo VI</p></div><div><p class="mb-2 text-[10px] font-bold uppercase tracking-[.18em] text-white">Localização</p><p>São Luís — Maranhão<br />Brasil</p></div><div><p class="mb-2 text-[10px] font-bold uppercase tracking-[.18em] text-white">Redes</p><div class="flex gap-4"><a href="https://www.instagram.com/equipevortex/" target="_blank" rel="noreferrer" class="transition hover:text-racing">Instagram</a><a href="https://www.facebook.com/equipevortexracing/" target="_blank" rel="noreferrer" class="transition hover:text-racing">Facebook</a></div></div></div></div></section>
+    </main>
+    <footer class="border-t border-white/10 bg-[#20242e]"><div class="mx-auto flex max-w-7xl flex-col gap-5 px-5 py-8 text-[10px] font-bold uppercase tracking-[.18em] text-white/40 sm:flex-row sm:items-center sm:justify-between sm:px-8"><img src="assets/logo-white.png" alt="Vórtex Racing" class="h-7 w-auto opacity-60" /><p>© 2026 Vórtex Racing · Gestão 2026</p></div></footer>
+
+    <script>
+      const menu = document.getElementById('mobile-menu');
+      const menuButton = document.getElementById('menu-button');
+      const closeButton = document.getElementById('close-menu');
+      const setMenu = (open) => { menu.classList.toggle('hidden', !open); document.body.classList.toggle('menu-open', open); menuButton.setAttribute('aria-expanded', open); menu.setAttribute('aria-hidden', !open); };
+      menuButton.addEventListener('click', () => setMenu(true));
+      closeButton.addEventListener('click', () => setMenu(false));
+      document.querySelectorAll('.mobile-link').forEach(link => link.addEventListener('click', () => setMenu(false)));
+      document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setMenu(false); });
+    </script>
+  </body>
+</html>
